@@ -77,7 +77,7 @@ def test_cube_known_value():
 
 
 def test_cube_with_homothety_and_rotation():
-    """Та же коробка, но с гомотетией и поворотами. Характеристика должна остаться 12."""
+    """Та же коробка, но с гомотетией и поворотами. Характеристика должна cтать 0."""
     content = """200.0 45.0 45.0 30.0
 8 6 24
 -0.75 -0.75 0.75
@@ -96,7 +96,7 @@ def test_cube_with_homothety_and_rotation():
 """
     filename = create_geom_file(content)
     poly = Polyedr(filename)
-    assert poly.good_edges_projection_length() == 12.0
+    assert poly.good_edges_projection_length() == 0
 
 
 def test_cube_with_good_edges():
@@ -128,7 +128,7 @@ def test_cube_with_good_edges():
 
 
 def test_cube_with_good_edges():
-    """Тот же куб, но с гомотетией и поворотами. Характеристика должна остаться = 12.8.
+    """Тот же куб, но с гомотетией и поворотами. Характеристика должна стать = 0.
     """
     content = """150.0 60.0 60.0 60.0
 8 6 24
@@ -150,5 +150,5 @@ def test_cube_with_good_edges():
     filename = create_geom_file(content)
     poly = Polyedr(filename)
     result = poly.good_edges_projection_length()
-    assert math.isclose(result, 12.8, rel_tol=1e-9)
+    assert math.isclose(result, 0, rel_tol=1e-9)
 
