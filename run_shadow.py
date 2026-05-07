@@ -9,16 +9,15 @@ try:
     for name in ["cube_intersect", "ccc", "cube", "box", "king", "cow"]:
         print("=============================================================")
         print(f"Начало работы с полиэдром '{name}'")
-        start_time = time()
         poly = Polyedr(f"data/{name}.geom")
-        # Вычисление характеристики
-        total_length = poly.good_edges_projection_length()
-        print(f"Сумма длин проекций 'хороших' рёбер: {total_length:.6f}")
+        good_len = poly.good_edges_projection_length()
+        print(f"Сумма длин проекций рёбер с «хорошей» серединой: {good_len}")
+        start_time = time()
         poly.draw(tk)
         delta_time = time() - start_time
         print(f"Изображение полиэдра '{name}' заняло {delta_time} сек.")
         input("Hit 'Return' to continue -> ")
-except (EOFError, KeyboardInterrupt):
+except(EOFError, KeyboardInterrupt):
     print("\nStop")
     tk.close()
 

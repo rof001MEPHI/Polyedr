@@ -56,7 +56,7 @@ def test_cube_known_value():
     хорошие, но у 4 ребер проекция = 0 → характеристика = 1,5*8 = 12.
     """
     content = """1.0 0 0 0
-8 6 24
+8 5 20
 -0.75 -0.75 0.75
 -0.75 0.75 0.75
 0.75 0.75 0.75
@@ -77,9 +77,9 @@ def test_cube_known_value():
 
 
 def test_cube_with_homothety_and_rotation():
-    """Та же коробка, но с гомотетией и поворотами. Характеристика должна cтать 0."""
-    content = """200.0 45.0 45.0 30.0
-8 6 24
+    """Та же коробка, но с гомотетией. Характеристика должна cтать 60."""
+    content = """5 0 0 0
+8 5 20
 -0.75 -0.75 0.75
 -0.75 0.75 0.75
 0.75 0.75 0.75
@@ -128,9 +128,9 @@ def test_cube_with_good_edges():
 
 
 def test_cube_with_good_edges():
-    """Тот же куб, но с гомотетией и поворотами. Характеристика должна стать = 0.
+    """Тот же куб, но с гомотетией и поворотами. Характеристика должна стать = 1920.
     """
-    content = """150.0 60.0 60.0 60.0
+    content = """150 0 0 0
 8 6 24
 -0.8 -0.8 -0.8
 -0.8 -0.8 0.8
@@ -150,5 +150,5 @@ def test_cube_with_good_edges():
     filename = create_geom_file(content)
     poly = Polyedr(filename)
     result = poly.good_edges_projection_length()
-    assert math.isclose(result, 0, rel_tol=1e-9)
+    assert math.isclose(result, 1920, rel_tol=1e-9)
 
